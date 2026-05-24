@@ -266,12 +266,13 @@ header .container {
   gap: 3rem;
   padding: 3.5rem 2rem 2rem;
   width: 100%;
-  height: calc(100vh - 55px - 3.5rem - 2rem);
-  /* (viewport minus sticky header minus vertical padding) */
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 70vh;
   box-sizing: border-box;
 }
 
-/* ── LEFT PANEL: Profile ── */
+/* ── LEFT PANEL: Profile (base styles) ── */
 .hero-profile {
   display: flex;
   flex-direction: column;
@@ -285,7 +286,6 @@ header .container {
   height: 100%;
   box-sizing: border-box;
 }
-
 .profile-name {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   color: var(--header-bg);
@@ -293,7 +293,6 @@ header .container {
   line-height: 1.15;
   margin: 0;
 }
-
 .profile-role {
   font-size: clamp(0.95rem, 1.4vw, 1.15rem);
   color: #555;
@@ -301,69 +300,15 @@ header .container {
   line-height: 1.5;
   margin: 0;
 }
+.profile-role br { display: block; content: ""; }
 
-.profile-role br {
-  display: block;
-  content: "";
-}
-
-/* ── RIGHT PANEL: Carousel ── */
-.hero-calendars {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  padding: 1rem 0;
-}
-
-/* ── Calendar Carousel ── */
-.calendar-carousel {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  position: relative;
-  width: 100%;
-}
-
-/* Hidden scrollbar on the track */
-.carousel-track {
-  display: flex;
-  flex: 1 1 auto;
-  align-items: stretch;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 0.5rem;
-  scrollbar-width: none;
-}
-.carousel-track::-webkit-scrollbar {
-  display: none;
-}
-
-/* Each card snaps into view — 1 card wide by default */
-.carousel-track .calendar-card {
-  flex: 0 0 100%;
-  scroll-snap-align: center;
-}
-
-/* Show 2 cards at a time on wide enough screens */
-@media (min-width: 1000px) {
-  .carousel-track {
-    gap: 1.5rem;
-  }
-  .carousel-track .calendar-card {
-    flex: 0 0 calc((100% - 1.5rem) / 2);
-    max-width: calc((100% - 1.5rem) / 2);
-  }
-}
-
-/* ── Hero split – mobile: stack panels ── */
+/* ── Stack panels on tablet / phone ── */
 @media (max-width: 960px) {
   .hero-split {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 2rem 1.5rem 1rem;
+    min-height: auto;
   }
   .hero-profile {
     flex-direction: row;
@@ -376,9 +321,7 @@ header .container {
     white-space: nowrap;
   }
 }
-
 @media (max-width: 600px) {
-  /* Profile card */
   .hero-profile {
     flex-direction: column;
     text-align: center;
@@ -391,39 +334,152 @@ header .container {
   .profile-role {
     font-size: 0.9rem;
   }
-  /* Hero + carousel cards */
-  .hero {
-    padding: 3.5rem 0 3rem;
-  }
-  .calendar-card {
-    padding: 1.2rem 1.1rem 1.2rem;
-  }
-  .card-title {
-    font-size: 0.88rem;
-  }
-  .card-table {
-    font-size: 0.78rem;
+}
+
+/* ── RIGHT PANEL: Carousel ── */
+.hero-calendars {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ── Calendar Carousel ── */
+.calendar-carousel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Track ── */
+.carousel-track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.25rem 0 0.75rem;
+  scrollbar-width: none;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  /* height auto → tarjetas toman la altura de su contenido */
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Each card: 1 visible at a time (mobile / narrow) ── */
+.carousel-track .calendar-card {
+  flex: 0 0 100%;
+  min-width: 100%;
+  max-width: 100%;
+  scroll-snap-align: start;
+}
+
+/* ── 2 cards visible side by side (>= 700 px) ── */
+@media (min-width: 700px) {
+  .carousel-track .calendar-card {
+    flex: 0 0 calc((100% - 1.5rem) / 2);
+    min-width: calc((100% - 1.5rem) / 2);
+    max-width: calc((100% - 1.5rem) / 2);
   }
 }
 
-/* ── Card responsive overrides for carousel ── */
-
-/* Calendar card */
-.calendar-card {
+/* ── Nav buttons ── */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-30%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(74, 143, 106, 0.45);
+  background: rgba(255, 255, 255, 0.95);
+  color: #4a8f6a;
+  font-size: 0.85rem;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.carousel-btn:hover {
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
-  padding: 1.4rem 1.5rem 1.5rem;
+  border-color: #4a8f6a;
+  box-shadow: 0 4px 14px rgba(74, 143, 106, 0.3);
+}
+.carousel-btn:active {
+  background: #f0f6f3;
+}
+.carousel-prev  { left: -18px; }
+.carousel-next  { right: -18px; }
+
+/* Flechas dentro del panel en pantallas angostas */
+@media (max-width: 1100px) {
+  .carousel-prev { left: 2px; }
+  .carousel-next { right: 2px; }
+}
+@media (max-width: 768px) {
+  .carousel-prev { left: -6px; }
+  .carousel-next { right: -6px; }
+}
+
+/* ── Dot indicators ── */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  padding: 0.6rem 0 0;
+}
+.carousel-indicators button {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: #cde0d4;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  padding: 0;
+}
+.carousel-indicators button.active {
+  background: #4a8f6a;
+  transform: scale(1.3);
+}
+
+/* ── Calendar card (carousel-specific overrides) ── */
+/* Do NOT force height:100% — cards grow only as tall as their content */
+
+.carousel-track .calendar-card {
+  /* inline-block keeps card from stretching like a grid cell */
   display: flex;
   flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(74, 143, 106, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  padding: 1.5rem 1.3rem 1.3rem;
+  position: relative; /* positions the ::before stripe */
+  overflow: visible;  /* hover lift must not be clipped */
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .calendar-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  z-index: 1;
 }
 
 /* Green accent stripe at the top of each card */

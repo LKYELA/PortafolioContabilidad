@@ -1,8 +1,8 @@
 // Calendar Carousel — click arrows, keyboard nav, and dot indicators
 document.addEventListener('DOMContentLoaded', () => {
-  const track      = document.getElementById('carouselTrack');
-  const prevBtn    = document.getElementById('carouselPrev');
-  const nextBtn    = document.getElementById('carouselNext');
+  const track = document.getElementById('carouselTrack');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
   const indicatorsContainer = document.getElementById('carouselIndicators');
 
   if (!track || !prevBtn || !nextBtn) return;
@@ -18,10 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
   }
 
+  /** Return the max valid scroll index for the current viewport */
+  function getMaxIndex() {
+    return Math.max(total - (window.innerWidth >= 700 ? 2 : 1), 0);
+  }
+
   /** Go to index with scroll-snap alignment */
   function goTo(index) {
     if (index < 0) index = 0;
-    const maxIndex = Math.max(total - (window.innerWidth >= 700 ? 2 : 1), 0);
+    const maxIndex = getMaxIndex();
     if (index > maxIndex) index = maxIndex;
     currentIndex = index;
     track.scrollTo({
@@ -33,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── dot indicators ── */
   if (indicatorsContainer) {
-    const maxIndex = Math.max(total - (window.innerWidth >= 700 ? 2 : 1), 0);
-    for (let i = 0; i <= maxIndex; i++) {
+    for (let i = 0; i <= getMaxIndex(); i++) {
       const dot = document.createElement('button');
       dot.setAttribute('aria-label', `Ir a tarjeta ${i + 1}`);
       dot.dataset.index = i;
@@ -71,15 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   track.addEventListener('touchend', (e) => {
     if (!isSwiping) return;
-    const diff  = startX - e.changedTouches[0].clientX;
-    const unit  = getCardUnit();
-    if (diff > unit * 0.25)   goTo(currentIndex + 1);
-    if (diff < -unit * 0.25)  goTo(currentIndex - 1);
+    const diff = startX - e.changedTouches[0].clientX;
+    const unit = getCardUnit();
+    if (diff > unit * 0.25)  goTo(currentIndex + 1);
+    if (diff < -unit * 0.25) goTo(currentIndex - 1);
     isSwiping = false;
   });
 
   /* ── update on resize ── */
-  window.addEventListener('resize', () => updateIndicators());
+  window.addEventListener('resize', () => {
+    currentIndex = Math.min(currentIndex, getMaxIndex());
+    updateIndicators();
+  });
 
   /* ── highlight current slide on scroll ── */
   track.addEventListener('scroll', () => {
@@ -92,5 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   /* ── init ── */
-  updateIndicators();
+  currentIndex = Math.min(currentIndex, getMaxIndex());
+  goTo(currentIndex);
 });
