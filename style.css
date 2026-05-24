@@ -254,26 +254,251 @@ header .container {
 
 /* Hero section */
 .hero {
-  min-height: 80vh;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #f0f6f3 0%, #ddeee8 40%, #e8f0f9 100%);
+}
+
+/* Split layout: profile left, carousel right — equal 50/50 split */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 3rem;
+  padding: 3.5rem 2rem 2rem;
+  width: 100%;
+  height: calc(100vh - 55px - 3.5rem - 2rem);
+  /* (viewport minus sticky header minus vertical padding) */
+  box-sizing: border-box;
+}
+
+/* ── LEFT PANEL: Profile ── */
+.hero-profile {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
-  padding-top: clamp(70px, 15vw, 100px);
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+  gap: 0.8rem;
+  padding: 3rem 2.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 20px;
+  border: 1px solid rgba(74, 143, 106, 0.18);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  box-sizing: border-box;
 }
 
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.5rem;
+.profile-name {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   color: var(--header-bg);
-  font-weight: 700;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
 }
 
-.hero p {
-  font-size: 1.3rem;
-  color: var(--text-gray);
-  max-width: 600px;
+.profile-role {
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  color: #555;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.profile-role br {
+  display: block;
+  content: "";
+}
+
+/* ── RIGHT PANEL: Carousel ── */
+.hero-calendars {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 1rem 0;
+}
+
+/* ── Calendar Carousel ── */
+.calendar-carousel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+/* Hidden scrollbar on the track */
+.carousel-track {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each card snaps into view — 1 card wide by default */
+.carousel-track .calendar-card {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+/* Show 2 cards at a time on wide enough screens */
+@media (min-width: 1000px) {
+  .carousel-track {
+    gap: 1.5rem;
+  }
+  .carousel-track .calendar-card {
+    flex: 0 0 calc((100% - 1.5rem) / 2);
+    max-width: calc((100% - 1.5rem) / 2);
+  }
+}
+
+/* ── Hero split – mobile: stack panels ── */
+@media (max-width: 960px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem 1rem;
+  }
+  .hero-profile {
+    flex-direction: row;
+    align-items: center;
+    padding: 1.5rem 1.8rem;
+    gap: 1.2rem;
+  }
+  .profile-name {
+    font-size: 1.6rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Profile card */
+  .hero-profile {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.3rem;
+    padding: 1.4rem 1.2rem;
+  }
+  .profile-name {
+    font-size: 1.4rem;
+  }
+  .profile-role {
+    font-size: 0.9rem;
+  }
+  /* Hero + carousel cards */
+  .hero {
+    padding: 3.5rem 0 3rem;
+  }
+  .calendar-card {
+    padding: 1.2rem 1.1rem 1.2rem;
+  }
+  .card-title {
+    font-size: 0.88rem;
+  }
+  .card-table {
+    font-size: 0.78rem;
+  }
+}
+
+/* ── Card responsive overrides for carousel ── */
+
+/* Calendar card */
+.calendar-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  padding: 1.4rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.calendar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Green accent stripe at the top of each card */
+.calendar-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4a8f6a, #6dbd8f);
+}
+
+.card-number {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: #4a8f6a;
+  border-radius: 12px;
+  padding: 0.15em 0.55em;
+  align-self: flex-start;
+  margin-bottom: 0.65rem;
+}
+
+.card-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--header-bg);
+  line-height: 1.35;
+  margin-bottom: 0.9rem;
+}
+
+.card-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.card-table thead tr {
+  border-bottom: 2px solid #e2ece8;
+}
+
+.card-table th {
+  text-align: left;
+  font-weight: 700;
+  color: #4a8f6a;
+  padding: 0.4rem 0.25rem 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.card-table th:last-child {
+  text-align: right;
+}
+
+.card-table tbody tr {
+  border-bottom: 1px solid #f0f4f2;
+}
+
+.card-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.card-table tbody td {
+  padding: 0.38rem 0.25rem;
+  color: #444;
+}
+
+.card-table tbody td:last-child {
+  text-align: right;
+}
+
+.date-placeholder {
+  color: #aaa;
+  font-style: italic;
 }
 
 /* Utility classes */
@@ -579,20 +804,7 @@ header .container {
   overflow: hidden;
 }
 
-.about::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgba(52, 152, 219, 0.1) 0%,
-    transparent 50%
-  );
-  z-index: 0;
-}
+
 
 .about-container {
   position: relative;

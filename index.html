@@ -46,54 +46,229 @@
   </button>
 </div>
 </header>
-     <main>
+      <main>
 <section class="hero">
-  <div class="hero-title">Luz Karime Yela</div>
-  <p>Contadora Pública - Especialista en Finanzas</p>
-</section>
-    </main>
+  <div class="container hero-split">
 
-    <section class="about" id="about">
-      <div class="about-container">
-        <div class="about-content">
-          <div class="about-text-content">
-            <h2>Sobre Mí</h2>
-            <div class="about-divider"></div>
-            <p class="about-description">
-              Contadora Pública con más de 8 años de experiencia en el sector
-              financiero. Especializada en finanzas corporativas, impuestos y
-              asesoría contable para empresas de todos los tamaños.
-            </p>
-            <div class="about-stats">
-              <div class="stat-item">
-                <span class="stat-number">8+</span>
-                <span class="stat-label">Años de experiencia</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">500+</span>
-                <span class="stat-label">Clientes satisfechos</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">15+</span>
-                <span class="stat-label">Certificaciones</span>
-              </div>
-            </div>
-            <a href="#contact" class="about-cta">Contactar</a>
-          </div>
-          <div class="about-image-container">
-            <div class="about-image-wrapper">
-              <img
-                src="assets/profile.svg"
-                alt="Luz Karime Yela"
-                class="about-image"
-                id="profile-img"
-              />
-              <div class="about-image-overlay"></div>
-            </div>
-          </div>
+    <!-- LEFT PANEL: Profile -->
+    <div class="hero-profile">
+      <h1 class="profile-name">Luz Karime Yela</h1>
+      <p class="profile-role">Contadora Pública<br>Especialista en Finanzas</p>
+    </div><!-- /.hero-profile -->
+
+    <!-- RIGHT PANEL: Calendar Carousel -->
+    <div class="hero-calendars">
+      <div class="calendar-carousel" id="calendarCarousel">
+        <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="carousel-track" id="carouselTrack">
+
+        <div class="calendar-card">
+          <div class="card-number">01</div>
+          <h3 class="card-title">Declaración y pago bimestral – Consumo</h3>
+          <table class="card-table">
+            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
+              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
+              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
+              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
+              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
+              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-    </section>
+
+        <div class="calendar-card">
+          <div class="card-number">02</div>
+          <h3 class="card-title">Declaración mensual y pago – Gasolina y ACPM</h3>
+          <table class="card-table">
+            <thead><tr><th>Mes</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Enero</td><td><strong>13 de febrero</strong></td></tr>
+              <tr><td>Febrero</td><td><strong>13 de marzo</strong></td></tr>
+              <tr><td>Marzo</td><td><strong>16 de abril</strong></td></tr>
+              <tr><td>Abril</td><td><strong>15 de mayo</strong></td></tr>
+              <tr><td>Mayo</td><td><strong>16 de junio</strong></td></tr>
+              <tr><td>Junio</td><td><strong>14 de julio</strong></td></tr>
+              <tr><td>Julio</td><td><strong>18 de agosto</strong></td></tr>
+              <tr><td>Agosto</td><td><strong>14 de septiembre</strong></td></tr>
+              <tr><td>Septiembre</td><td><strong>15 de octubre</strong></td></tr>
+              <tr><td>Octubre</td><td><strong>17 de noviembre</strong></td></tr>
+              <tr><td>Noviembre</td><td><strong>15 de diciembre</strong></td></tr>
+              <tr><td>Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">03</div>
+          <h3 class="card-title">Declaración y pago – Carbono</h3>
+          <table class="card-table">
+            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
+              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
+              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
+              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
+              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
+              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">04</div>
+          <h3 class="card-title">Declaración anual y pago – RST (Régimen Simple de Tributación)</h3>
+          <table class="card-table">
+            <thead><tr><th>Concepto</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Declaración anual</td><td><strong>Hasta abril</strong> (por último dígito del NIT)</td></tr>
+              <tr><td>Anticipo bimestral (ene–feb)</td><td><strong>Hasta mayo</strong></td></tr>
+              <tr><td>Anticipo bimestral (mar–abr)</td><td><strong>Hasta junio</strong></td></tr>
+              <tr><td>Anticipo bimestral (may–jun)</td><td><strong>Hasta julio</strong></td></tr>
+              <tr><td>Anticipo bimestral (jul–ago)</td><td><strong>Hasta septiembre</strong></td></tr>
+              <tr><td>Anticipo bimestral (sep–oct)</td><td><strong>Hasta noviembre</strong></td></tr>
+              <tr><td>Anticipo bimestral (nov–dic)</td><td><strong>Hasta enero de 2027</strong></td></tr>
+              <tr><td colspan="2"><em>Consultar calendario DIAN oficial</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">05</div>
+          <h3 class="card-title">Declaración y pago bimestral – IVA prestadores de servicios desde el exterior</h3>
+          <table class="card-table">
+            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
+              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
+              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
+              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
+              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
+              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">06</div>
+          <h3 class="card-title">Declaración y pago – Patrimonio</h3>
+          <table class="card-table">
+            <thead><tr><th>Cuota</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Primera cuota</td><td><strong>14 de septiembre</strong></td></tr>
+              <tr><td>Segunda cuota</td><td>Por confirmar <em>(Consultar calendario DIAN oficial)</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">07</div>
+          <h3 class="card-title">Presentación y pago – Productos plásticos de un solo uso</h3>
+          <table class="card-table">
+            <thead><tr><th>Periodo</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Anual</td><td><strong>Hasta febrero</strong> <em>(día exacto por confirmar)</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">08</div>
+          <h3 class="card-title">Presentación y pago – Bebidas ultraprocesadas azucaradas y productos comestibles ultraprocesados</h3>
+          <table class="card-table">
+            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
+              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
+              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
+              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
+              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
+              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">09</div>
+          <h3 class="card-title">Pagos anticipados bimestrales – Presencia Económica Significativa (PES)</h3>
+          <table class="card-table">
+            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
+              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
+              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
+              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
+              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
+              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">10</div>
+          <h3 class="card-title">Declaración anual – Activos en el exterior</h3>
+          <table class="card-table">
+            <thead><tr><th>Concepto</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Año gravable 2025</td><td><em>Consultar calendario de renta</em> <small>(variantes por tipo de contribuyente y último dígito del NIT)</small></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">11</div>
+          <h3 class="card-title">Registro Único de Beneficiarios Finales (RUB)</h3>
+          <table class="card-table">
+            <thead><tr><th>Periodo</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Anual / Eventual</td><td><strong>13 de mes por definir</strong><em>Consultar calendario DIAN oficial</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">12</div>
+          <h3 class="card-title">Informe país por país (Country-by-Country Report)</h3>
+          <table class="card-table">
+            <thead><tr><th>Periodo</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Anual</td><td><strong>15 de diciembre</strong><em>Independiente del NIT</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-card">
+          <div class="card-number">13</div>
+          <h3 class="card-title">Precios de transferencia (Transfer Pricing) – declaración informativa y documentación comprobatoria</h3>
+          <table class="card-table">
+            <thead><tr><th>Documento</th><th>Fecha límite</th></tr></thead>
+            <tbody>
+              <tr><td>Declaración informativa y documentación comprobatoria</td><td><strong>Hasta septiembre</strong> <em>(día exacto por confirmar)</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- /.carousel-track -->
+
+      <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Siguiente">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+       <div class="carousel-indicators" id="carouselIndicators"></div>
+      </div><!-- /.calendar-carousel -->
+    </div><!-- /.hero-calendars -->
+
+    </div><!-- /.hero-split -->
+
+  </section>
+</main>
+
+     <section class="about" id="about">
+     </section>
 
     <section class="services" id="services">
       <div class="container">
@@ -270,6 +445,7 @@
     </footer>
 
     <script type="module" src="components/header.js"></script>
+    <script type="module" src="components/carousel.js"></script>
     <script type="module" src="components/about.js"></script>
     <script type="module" src="components/footer.js"></script>
   </body>
