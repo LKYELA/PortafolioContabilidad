@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.style.overflow = '';
     }
   });
-  
+
 // Handle escape key to close menu
    document.addEventListener('keydown', function(event) {
      if (event.key === 'Escape' && menu.classList.contains('active')) {
@@ -40,20 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
        document.body.style.overflow = '';
      }
    });
-   
-   // Add social icons to mobile menu when opened (optional enhancement)
-   // This creates a duplicate set of social icons in the mobile menu
-   const socialIconsDesktop = document.querySelector('.social-icons');
-   if (socialIconsDesktop && menu) {
-     // Only add if not already present to avoid duplicates on resize
-     if (!menu.querySelector('.social-icons-mobile')) {
-       const socialIconsMobile = socialIconsDesktop.cloneNode(true);
-       socialIconsMobile.classList.add('social-icons-mobile');
-       socialIconsMobile.classList.remove('social-icons');
-       menu.appendChild(socialIconsMobile);
-     }
-   }
-   
+    
    // Services section animations
    const serviceCards = document.querySelectorAll('.service-card');
    const servicesSection = document.querySelector('.services');

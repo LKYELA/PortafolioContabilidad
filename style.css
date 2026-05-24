@@ -43,150 +43,103 @@ header {
   border-bottom: 1px solid var(--border-light);
 }
 
-/* Flex container for logo, nav, actions */
+/* Header styles - Single row on desktop */
+/* Container keeps items in one row with proper spacing */
 header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  flex-wrap: nowrap;
+  min-height: 55px;
 }
 
 /* Logo */
 .logo a {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
   font-weight: 700;
   color: var(--text-light);
   text-decoration: none;
-  position: relative;
-  transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
-.logo a:hover {
-  color: var(--accent-green);
-}
-
-.logo a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-green);
-  transition: width 0.3s ease;
-}
-
-.logo a:hover::after {
-  width: 100%;
-}
-
-/* Navigation */
+/* Navigation as flex row */
 .menu {
   display: flex;
-  gap: 2.5rem;
+  align-items: center;
+  flex-shrink: 1;
+  min-width: 0;
+  gap: 0.6rem;
   list-style: none;
-  flex-grow: 1;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
-.menu li {
-  position: relative;
+.menu ul {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+/* Navigation links */
 .menu li a {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-gray);
   text-decoration: none;
+  padding: 0.2rem 0.1rem;
   transition: color 0.3s ease;
-  padding: 0.5rem 0;
-  display: block;
-  position: relative;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .menu li a:hover {
-  color: var(--text-light);
+  color: var(--accent-green);
 }
 
-.menu li a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
+/* CTA button in navigation */
+.cta-nav {
   background: var(--accent-green);
-  transition: width 0.3s ease;
-}
-
-.menu li a:hover::after {
-  width: 100%;
-}
-
-/* Active link style */
-.menu li.active a,
-.menu li.active a:hover {
-  color: var(--text-light);
-}
-
-.menu li.active a::after,
-.menu li.active a:hover::after {
-  width: 100%;
-}
-
-/* Header actions (CTA + socials) */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* CTA Button */
-.cta-button {
-  display: inline-block;
-  background: var(--accent-green);
-  color: var(--header-bg);
-  padding: 0.6rem 1.2rem;
+  color: var(--header-bg) !important;
+  padding: clamp(0.25rem, 0.6vw, 0.35rem) clamp(0.5rem, 1vw, 0.7rem) !important;
   border-radius: 4px;
-  text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
+  font-size: clamp(0.75rem, 1vw, 0.82rem);
 }
 
-.cta-button:hover {
+.cta-nav:hover {
   background: var(--accent-green-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Social Icons */
+/* Social Icons - inline on desktop */
 .social-icons {
   display: flex;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
 }
 
 .social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 26px;
+  height: 26px;
   color: var(--text-gray);
   background: transparent;
   border: 1px solid var(--border-light);
   border-radius: 50%;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .social-icon:hover {
   color: var(--header-bg);
   background: var(--accent-green);
-  transform: translateY(-3px);
   border-color: var(--accent-green);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Menu Toggle (Hamburger) */
@@ -211,32 +164,36 @@ header .container {
 }
 
 /* Active state for hamburger (when menu open) */
-.menu-toggle.active .hamburger:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+.menu-toggle.active .hamburger:nth-of-type(1) {
+  transform: translateY(7px) rotate(45deg);
 }
-.menu-toggle.active .hamburger:nth-child(2) {
+.menu-toggle.active .hamburger:nth-of-type(2) {
   opacity: 0;
 }
-.menu-toggle.active .hamburger:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+.menu-toggle.active .hamburger:nth-of-type(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile styles */
-@media (max-width: 992px) {
-  /* Adjust spacing on larger tablets */
+/* Tablet styles - prevent overflow before mobile */
+@media (max-width: 1024px) {
   .menu {
-    gap: 1.5rem;
+    gap: clamp(0.8rem, 1.5vw, 1rem);
   }
 
   .menu li a {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
   }
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
+  header .container {
+    min-height: 60px;
+  }
+
   .menu {
     position: fixed;
-    top: 80px;
+    top: 60px;
     left: 0;
     width: 100%;
     background: var(--header-bg-transparent);
@@ -253,12 +210,17 @@ header .container {
   }
 
   .menu.active {
-    max-height: 400px; /* enough for menu items */
+    max-height: 500px;
     transition: max-height 0.5s ease-in;
   }
 
+  .menu ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .menu li {
-    margin: 1.2rem 0;
+    margin: 0.6rem 0;
     width: 100%;
     text-align: center;
   }
@@ -266,33 +228,27 @@ header .container {
   .menu li a {
     width: 100%;
     display: block;
-    padding: 0.5rem 0;
+    padding: 0.6rem 0;
     font-size: 1.1rem;
   }
 
-  /* Hide header actions on mobile */
-  .header-actions {
-    display: none;
+.social-icons {
+     display: none;
+   }
+   
+   .menu-toggle {
+     display: flex;
+   }
+ }
+
+/* Small mobile - very narrow screens */
+@media (max-width: 480px) {
+  .logo a {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   }
 
-  .menu-toggle {
-    display: flex;
-  }
-
-  /* Optional: show social icons inside mobile menu at bottom */
-  .menu .social-icons-mobile {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .menu .social-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 1.2rem;
+  .menu li a {
+    font-size: 1rem;
   }
 }
 
@@ -303,7 +259,7 @@ header .container {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 100px; /* offset for fixed header */
+  padding-top: clamp(70px, 15vw, 100px);
   background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
 }
 
