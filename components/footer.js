@@ -1,44 +1,37 @@
-// Footer functionality for newsletter and back-to-top
+// Footer: year, back-to-top, newsletter, scroll animations
+import { observeOnScroll, isValidEmail } from './utils.js';
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Set current year
+  // ── Year ──
   const yearEl = document.getElementById('current-year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ── Back to top ──
   const backToTopBtn = document.getElementById('back-to-top');
-  
-  // Back to top button functionality
   if (backToTopBtn) {
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
-    });
-    
+      backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+
     backToTopBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-  
-  // Newsletter form submission
+
+  // ── Newsletter ──
   const newsletterForm = document.getElementById('newsletter-form');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const email = this.querySelector('input[type="email"]').value;
-      
-      if (email && email.includes('@')) {
+
+      if (email && isValidEmail(email)) {
         const btn = this.querySelector('button');
         const originalText = btn.textContent;
         btn.textContent = '¡Gracias!';
         btn.disabled = true;
-        
+
         setTimeout(() => {
           btn.textContent = originalText;
           btn.disabled = false;
@@ -47,21 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
-  // Animate footer elements on scroll
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-  
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animated');
-      }
-    });
-  }, observerOptions);
-  
-  const footerElements = document.querySelectorAll('.footer-column, .footer-logo, .footer-bottom');
-  footerElements.forEach(el => observer.observe(el));
+
+  // ── Scroll animations ──
+  observeOnScroll('.footer-column, .footer-logo, .footer-bottom', (el) => {
+    el.classList.add('visible');
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 });

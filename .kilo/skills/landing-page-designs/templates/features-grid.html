@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Grid Section</title>
+    <style>
+        /* CSS Variables for easy theming */
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --background-light: #ffffff;
+            --background-dark: #1f2937;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --spacing-unit: 8px;
+            --max-width: 1200px;
+        }
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-light);
+        }
+
+        /* Features Section Styles */
+        .features-grid {
+            padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
+            background-color: var(--background-light);
+        }
+
+        .features-grid-header {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            max-width: var(--max-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit));
+        }
+
+        .features-grid-header p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 50ch;
+        }
+
+        .features-grid-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            gap: calc(var(--spacing-unit) * 3);
+        }
+
+        /* Grid layout: 1 column on mobile, 2 on tablet, 3 on desktop */
+        @media (min-width: 640px) {
+            .features-grid-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background-color: var(--background-light);
+            border-radius: var(--radius-lg);
+            padding: calc(var(--spacing-unit) * 3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .feature-card h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit));
+        }
+
+        .feature-card p {
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Accessibility: Focus Styles */
+        .feature-card:focus-within {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Features Grid Section -->
+    <section class="features-grid">
+        <div class="features-grid-header">
+            <h2>Powerful Features</h2>
+            <p>Everything you need to succeed in one powerful platform</p>
+        </div>
+        <div class="features-grid-content">
+            <!-- Feature Card 1 -->
+            <div class="feature-card" tabindex="0">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <h3>Lightning Fast Performance</h3>
+                <p>Experience blazing fast load times and smooth interactions with our optimized infrastructure.</p>
+            </div>
+            
+            <!-- Feature Card 2 -->
+            <div class="feature-card" tabindex="0">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/></svg>
+                </div>
+                <h3>Intuitive Dashboard</h3>
+                <p>Manage everything from one clean, intuitive interface designed for maximum productivity.</p>
+            </div>
+            
+            <!-- Feature Card 3 -->
+            <div class="feature-card" tabindex="0">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
+                </div>
+                <h3>Advanced Analytics</h3>
+                <p>Get deep insights with comprehensive analytics and reporting tools to make data-driven decisions.</p>
+            </div>
+            
+            <!-- Feature Card 4 -->
+            <div class="feature-card" tabindex="0">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3>Secure & Reliable</h3>
+                <p>Bank-level security and 99.9% uptime guarantee keep your data safe and accessible.</p>
+            </div>
+            
+            <!-- Feature Card 5 -->
+            <div class="feature-card" tabindex="0">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </div>
+                <h3>24/7 Expert Support</h3>
+                <p>Our dedicated support team is available around the clock to help you succeed.</p>
+            </div>
+            
+            <!-- Feature Card 6 -->
+            <div class="feature-card" tabindex="0">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 16H5V9h14v10z"/></svg>
+                </div>
+                <h3>Seamless Integrations</h3>
+                <p>Connect with all your favorite tools through our extensive integration library.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

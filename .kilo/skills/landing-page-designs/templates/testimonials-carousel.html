@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials Carousel Section</title>
+    <style>
+        /* CSS Variables for easy theming */
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --background-light: #ffffff;
+            --background-dark: #1f2937;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --spacing-unit: 8px;
+            --max-width: 1200px;
+        }
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-light);
+        }
+
+        /* Testimonials Section Styles */
+        .testimonials-carousel {
+            padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
+            background-color: var(--background-light);
+        }
+
+        .testimonials-carousel-header {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            max-width: var(--max-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .testimonials-carousel-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit));
+        }
+
+        .testimonials-carousel-header p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 50ch;
+        }
+
+        .testimonials-carousel-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 0 calc(var(--spacing-unit) * 2);
+        }
+
+        .testimonial-card {
+            background-color: var(--background-light);
+            border-radius: var(--radius-lg);
+            padding: calc(var(--spacing-unit) * 3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 6rem;
+            color: rgba(99, 102, 241, 0.1);
+            font-family: serif;
+        }
+
+        .testimonial-content {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: calc(var(--spacing-unit) * 2);
+        }
+
+        .testimonial-author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-author-info h4 {
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) / 2);
+        }
+
+        .testimonial-author-info p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Navigation Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: calc(var(--spacing-unit));
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .testimonials-carousel-header h2 {
+                font-size: clamp(1.5rem, 5vw, 2rem);
+            }
+            
+            .testimonials-carousel-header p {
+                font-size: clamp(0.875rem, 3vw, 1.125rem);
+            }
+            
+            .testimonial-card {
+                padding: calc(var(--spacing-unit) * 2);
+            }
+            
+            .testimonial-author-image {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Accessibility: Focus Styles */
+        .dot:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Testimonials Carousel Section -->
+    <section class="testimonials-carousel">
+        <div class="testimonials-carousel-header">
+            <h2>What Our Clients Say</h2>
+            <p>Hear from businesses that have transformed their operations with our platform</p>
+        </div>
+        <div class="testimonials-carousel-content">
+            <div class="testimonial-slider">
+                <!-- Testimonial Slide 1 -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "This platform has completely transformed how we operate. We've seen a 300% increase in efficiency and our team loves using it every day."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-author-image">
+                                <!-- Placeholder for image -->
+                                <div style="width:100%;height:100%;background:linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:600;">
+                                    JS
+                                </div>
+                            </div>
+                            <div class="testimonial-author-info">
+                                <h4>Jane Smith</h4>
+                                <p>CEO, Tech Innovators Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial Slide 2 -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "The ROI was immediate. Within the first month, we saved over 20 hours per week in manual processes and our customer satisfaction scores went through the roof."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-author-image">
+                                <!-- Placeholder for image -->
+                                <div style="width:100%;height:100%;background:linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:600;">
+                                    MK
+                                </div>
+                            </div>
+                            <div class="testimonial-author-info">
+                                <h4>Michael Chen</h4>
+                                <p>Operations Director, Global Solutions Ltd.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial Slide 3 -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "Finally, a tool that actually understands our workflow. The customization options are incredible and the support team is always there when we need them."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-author-image">
+                                <!-- Placeholder for image -->
+                                <div style="width:100%;height:100%;background:linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:600;">
+                                    AC
+                                </div>
+                            </div>
+                            <div class="testimonial-author-info">
+                                <h4>Amanda Rodriguez</h4>
+                                <p>Founder, Creative Studio Co.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Slider Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #444;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            background-color: white;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .testimonial-slide {
+            padding: 3rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #4a6fa5;
+        }
+        
+        .author-info {
+            text-align: left;
+        }
+        
+        .author-name {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-title {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #bdc3c7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background-color: #4a6fa5;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-arrow:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        
+        .nav-arrow.prev {
+            left: 20px;
+        }
+        
+        .nav-arrow.next {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonial-slide {
+                padding: 2rem 1.5rem;
+            }
+            
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
+            
+            .author-avatar {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+            
+            .nav-arrow.prev {
+                left: 10px;
+            }
+            
+            .nav-arrow.next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>What Our Clients Say</h1>
+        <p>Real testimonials from satisfied customers</p>
+    </header>
+
+    <div class="container">
+        <div class="testimonial-slider" id="testimonialSlider">
+            <!-- Slides will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const testimonials = [
+                {
+                    text: "Working with this team was an absolute pleasure. They delivered beyond our expectations and helped us achieve results we never thought possible. Highly recommend!",
+                    author: "Sarah Johnson",
+                    title: "CEO, TechStartup Inc.",
+                    avatar: "https://via.placeholder.com/80x80?text=SJ"
+                },
+                {
+                    text: "The attention to detail and commitment to quality is unmatched. They took the time to understand our business needs and delivered a solution that perfectly fit our requirements.",
+                    author: "Michael Chen",
+                    title: "Director of Operations, Global Corp",
+                    avatar: "https://via.placeholder.com/80x80?text=MC"
+                },
+                {
+                    text: "From start to finish, the experience was fantastic. The team was responsive, professional, and delivered exactly what was promised on time and within budget.",
+                    author: "Emily Rodriguez",
+                    title: "Founder, Creative Studio",
+                    avatar: "https://via.placeholder.com/80x80?text=ER"
+                },
+                {
+                    text: "I've worked with several agencies over the years, but this team stands out for their expertise, communication, and dedication to client success. They truly care about delivering value.",
+                    author: "David Wilson",
+                    title: "VP Marketing, Enterprise Solutions",
+                    avatar: "https://via.placeholder.com/80x80?text=DW"
+                }
+            ];
+            
+            const slider = document.getElementById('testimonialSlider');
+            
+            // Create slides
+            testimonials.forEach((testimonial, index) => {
+                const slide = document.createElement('div');
+                slide.className = `testimonial-slide${index === 0 ? ' active' : ''}`;
+                slide.innerHTML = `
+                    <div class="testimonial-text">"${testimonial.text}"</div>
+                    <div class="testimonial-author">
+                        <img src="${testimonial.avatar}" alt="${testimonial.author}" class="author-avatar">
+                        <div class="author-info">
+                            <div class="author-name">${testimonial.author}</div>
+                            <div class="author-title">${testimonial.title}</div>
+                        </div>
+                    </div>
+                `;
+                slider.appendChild(slide);
+            });
+            
+            // Create navigation dots
+            const navDotsContainer = document.createElement('div');
+            navDotsContainer.className = 'slider-nav';
+            
+            testimonials.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `nav-dot${index === 0 ? ' active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index));
+                navDotsContainer.appendChild(dot);
+            });
+            
+            slider.appendChild(navDotsContainer);
+            
+            // Create navigation arrows
+            const prevArrow = document.createElement('button');
+            prevArrow.className = 'nav-arrow prev';
+            prevArrow.innerHTML = '&lt;';
+            prevArrow.setAttribute('aria-label', 'Previous testimonial');
+            
+            const nextArrow = document.createElement('button');
+            nextArrow.className = 'nav-arrow next';
+            nextArrow.innerHTML = '&gt;';
+            nextArrow.setAttribute('aria-label', 'Next testimonial');
+            
+            slider.appendChild(prevArrow);
+            slider.appendChild(nextArrow);
+            
+            let currentIndex = 0;
+            const slides = slider.querySelectorAll('.testimonial-slide');
+            const dots = slider.querySelectorAll('.nav-dot');
+            
+            function goToSlide(index) {
+                // Remove active class from current slide and dot
+                slides[currentIndex].classList.remove('active');
+                dots[currentIndex].classList.remove('active');
+                
+                // Add active class to new slide and dot
+                currentIndex = (index + testimonials.length) % testimonials.length;
+                slides[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+            }
+            
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+            
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+            
+            // Event listeners
+            prevArrow.addEventListener('click', prevSlide);
+            nextArrow.addEventListener('click', nextSlide);
+            
+            // Auto-advance every 5 seconds
+            let autoAdvance = setInterval(nextSlide, 5000);
+            
+            // Pause auto-advance when hovering over slider
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(autoAdvance);
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                autoAdvance = setInterval(nextSlide, 5000);
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

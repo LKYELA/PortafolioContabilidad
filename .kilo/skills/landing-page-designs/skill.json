@@ -1,0 +1,22 @@
+{
+  "name": "landing-page-designs",
+  "description": "A comprehensive skill for modern landing page design, providing templates, best practices, and examples for creating responsive, accessible, and visually appealing landing pages.",
+  "version": "1.0.0",
+  "author": "User",
+  "triggers": [
+    "landing page",
+    "hero section",
+    "glassmorphism",
+    "responsive",
+    "CTA",
+    "features",
+    "testimonials",
+    "pricing",
+    "footer",
+    "navbar",
+    "dark mode",
+    "minimalism",
+    "neumorphism",
+    "gradients"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "dom-manager",
+  "description": "Expert skill for DOM manipulation, event handling, dynamic content, animations, and performance optimization for landing pages.",
+  "version": "1.0.0",
+  "author": "User",
+  "triggers": [
+    "DOM",
+    "event listener",
+    "manipulate element",
+    "create element",
+    "traverse DOM",
+    "querySelector",
+    "classList",
+    "innerHTML",
+    "appendChild",
+    "removeChild",
+    "scroll",
+    "animation",
+    "form validation",
+    "dynamic content",
+    "lazy loading",
+    "intersection observer",
+    "resize observer",
+    "mutation observer"
+  ]
+}
