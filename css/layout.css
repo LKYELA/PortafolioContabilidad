@@ -130,6 +130,19 @@ header .container {
   background: linear-gradient(160deg, var(--peach-fuzz) 0%, var(--powder-blush) 40%, var(--cotton-candy) 100%);
 }
 
+/* Hero responsive - reduce height on mobile */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 300px;
+  }
+}
+
 .hero-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
