@@ -156,6 +156,18 @@ header .container {
   box-sizing: border-box;
 }
 
+@media (max-width: 960px) {
+  .hero-split {
+    grid-template-columns: 1fr 286px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-split {
+    grid-template-columns: 1fr 786px;
+  }
+}
+
 .hero-profile {
   display: flex;
   flex-direction: column;
@@ -177,6 +189,13 @@ header .container {
   min-height: 450px;
   box-sizing: border-box;
   overflow: visible;
+  max-width: 286px;
+}
+
+@media (min-width: 768px) {
+  .hero-calendars {
+    max-width: 786px;
+  }
 }
 
 /* ── About Section ── */

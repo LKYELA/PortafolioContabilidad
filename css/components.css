@@ -162,13 +162,21 @@
    height: auto;
    opacity: 1;
    scroll-behavior: smooth;
+   max-width: 286px;
+}
+
+/* Desktop: limit to 3 cards visible (250px * 3 + gaps) */
+@media (min-width: 768px) {
+  .carousel-track {
+    max-width: 786px;
+  }
 }
 
 .carousel-track::-webkit-scrollbar {
   display: none;
 }
 
-/* Cards: 1 visible in mobile, 2 on desktop */
+/* Cards: 250px width, 500px height */
 .carousel-track .calendar-card {
   display: flex;
   flex-direction: column;
@@ -181,24 +189,15 @@
   position: relative;
   overflow: visible;
   transition: transform var(--t-faster), box-shadow var(--t-faster);
-  /* Exact size: 50px width, 500px height */
   flex: 0 0 auto;
-  width: 50px;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
   height: 500px;
-  min-width: 50px;
-  max-width: 50px;
   min-height: 500px;
   max-height: 500px;
   scroll-snap-align: start;
   overflow-y: auto;
-}
-
-@media (min-width: 700px) {
-  .carousel-track .calendar-card {
-    flex: 0 0 calc(50% - 0.75rem);
-    min-width: calc(50% - 0.75rem);
-    max-width: calc(50% - 0.75rem);
-  }
 }
 
 /* Card top accent stripe */
