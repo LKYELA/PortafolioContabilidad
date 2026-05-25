@@ -1,73 +1,84 @@
-// Contact: form validation, submission, and scroll animations
+// Contact Module — Module Pattern implementation
 import { observeOnScroll, isValidEmail, setFieldError, validateRequiredFields } from './utils.js';
+import { MESSAGES, CONTACT } from './config.js';
 
-export function init(rootElement, config) {
-  const contactForm = rootElement.getElementById('contact-form');
-  const submitBtn = rootElement.getElementById('contact-submit');
-  const formStatus = rootElement.getElementById('contact-form-status');
+const ContactModule = (() => {
+  let contactForm = null;
+  let submitBtn = null;
+  let formStatus = null;
 
-  if (!contactForm) return;
+  const setupLiveValidation = () => {
+    contactForm.querySelectorAll('input[required], textarea[required]').forEach((field) => {
+      field.addEventListener('blur', function() {
+        if (this.hasAttribute('required') && !this.value.trim()) {
+          setFieldError(this, true);
+        } else {
+          setFieldError(this, false);
+        }
+      });
 
-  // ── Live validation on blur ──
-  contactForm.querySelectorAll('input[required], textarea[required]').forEach((field) => {
-    field.addEventListener('blur', function() {
-      if (this.hasAttribute('required') && !this.value.trim()) {
-        setFieldError(this, true);
-      } else {
+      field.addEventListener('input', function() {
         setFieldError(this, false);
-      }
+      });
     });
+  };
 
-    field.addEventListener('input', function() {
-      setFieldError(this, false);
-    });
-  });
+  const setupSubmitHandler = () => {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-  // ── Submit ──
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const isValid = validateRequiredFields(this, (field, type) => {
-      if (type === 'required') {
+      const isValid = validateRequiredFields(this, (field, type) => {
         setFieldError(field, true);
-      } else if (type === 'invalid-email') {
-        setFieldError(field, true);
-        // Optionally, you can set a custom message for email
-        // We'll rely on the general message below, but you could set a field-specific message here.
+      });
+
+      if (!isValid) {
+        formStatus.textContent = MESSAGES.contactValidating;
+        formStatus.className = 'contact-form-status error-msg';
+        return;
       }
-    });
 
-    if (!isValid) {
-      formStatus.textContent = 'Por favor completa todos los campos correctamente.';
-      formStatus.className = 'contact-form-status error-msg';
-      return;
-    }
-
-    // Simulate submit — replace with real API call
-    submitBtn.disabled = true;
-    submitBtn.querySelector('.btn-text').classList.add('hidden');
-    submitBtn.querySelector('.btn-loading').classList.remove('hidden');
-
-    setTimeout(() => {
-      formStatus.textContent = '¡Gracias! Tu mensaje ha sido enviado. Te responderemos pronto.';
-      formStatus.className = 'contact-form-status success';
-      contactForm.reset();
-
-      submitBtn.disabled = false;
-      submitBtn.querySelector('.btn-text').classList.remove('hidden');
-      submitBtn.querySelector('.btn-loading').classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.querySelector('.btn-text').classList.add('hidden');
+      submitBtn.querySelector('.btn-loading').classList.remove('hidden');
 
       setTimeout(() => {
-        formStatus.textContent = '';
-        formStatus.className = 'contact-form-status';
-      }, 5000);
-    }, 1500);
-  });
+        formStatus.textContent = MESSAGES.contactSuccess;
+        formStatus.className = 'contact-form-status success';
+        contactForm.reset();
 
-  // ── Scroll animations ──
-  observeOnScroll('.contact', () => {
-    document.querySelector('.contact .section-header')?.classList.add('visible');
-    document.querySelector('.contact-content')?.classList.add('visible');
-    document.querySelector('.form-header')?.classList.add('visible');
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-}
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.btn-text').classList.remove('hidden');
+        submitBtn.querySelector('.btn-loading').classList.add('hidden');
+
+        setTimeout(() => {
+          formStatus.textContent = '';
+          formStatus.className = 'contact-form-status';
+        }, CONTACT.statusClearDelay);
+      }, CONTACT.formSubmitDelay);
+    });
+  };
+
+  const setupScrollAnimation = () => {
+    observeOnScroll('.contact', () => {
+      document.querySelector('.contact .section-header')?.classList.add('visible');
+      document.querySelector('.contact-content')?.classList.add('visible');
+      document.querySelector('.form-header')?.classList.add('visible');
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  };
+
+  return {
+    init(rootElement, config) {
+      contactForm = rootElement.getElementById('contact-form');
+      submitBtn = rootElement.getElementById('contact-submit');
+      formStatus = rootElement.getElementById('contact-form-status');
+
+      if (!contactForm) return;
+
+      setupLiveValidation();
+      setupSubmitHandler();
+      setupScrollAnimation();
+    }
+  };
+})();
+
+export const init = ContactModule.init;

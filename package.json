@@ -1,6 +1,7 @@
 {
   "name": "portafolio-contabilidad",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "lint": "echo 'Lint step placeholder'",
     "build": "echo 'Build step placeholder'",

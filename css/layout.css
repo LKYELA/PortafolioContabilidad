@@ -126,7 +126,7 @@ header .container {
 
 /* ── Hero section ── */
 .hero {
-  min-height: 100vh;
+  min-height: 600px;
   background: linear-gradient(160deg, var(--peach-fuzz) 0%, var(--powder-blush) 40%, var(--cotton-candy) 100%);
 }
 

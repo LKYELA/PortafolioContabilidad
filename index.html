@@ -25,16 +25,17 @@
   </h1>
   <nav id="primary-menu" class="menu">
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Servicios</a></li>
-      <li><a href="#contact">Contacto</a></li>
-      <li><a href="#contact" class="cta-nav">Agendar cita</a></li>
+      <li><a href="#about" data-nav-about>About</a></li>
+      <li><a href="#services" data-nav-services>Servicios</a></li>
+      <li><a href="#contact" data-nav-contact>Contacto</a></li>
+      <li><a href="#contact" class="cta-nav" data-nav-cta>Agendar cita</a></li>
     </ul>
   </nav>
   <div class="social-icons">
-    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="social-icon" aria-label="Facebook" data-link-facebook><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social-icon" aria-label="WhatsApp" data-link-whatsapp><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="social-icon" aria-label="LinkedIn" data-link-linkedin><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="social-icon" aria-label="Instagram" data-link-instagram><i class="fab fa-instagram"></i></a>
   </div>
   <button
     class="menu-toggle"
@@ -87,31 +88,31 @@
             <div class="about-photo">
               <img src="assets/profile.jpg" alt="Foto profesional de LKY Consultores" class="profile-image">
             </div>
-            <div class="about-bio">
-              <h3>Sobre mí</h3>
-              <p>
-                Contadora pública con más de 10 años de experiencia en finanzas corporativas,
-                asesoría contable y tributaria para empresas y particulares. Especializada en
-                optimización de procesos contables y cumplimiento normativo.
-              </p>
-              <p>
-                Apasionada por ayudar a las empresas a tomar decisiones financieras informadas
-                y a cumplir con sus obligaciones tributarias de manera eficiente y oportuna.
-              </p>
-            </div>
+           <div class="about-bio">
+             <h3>Sobre mí</h3>
+             <p data-about-description>
+               Contadora pública con más de 10 años de experiencia en finanzas corporativas,
+               asesoría contable y tributaria para empresas y particulares. Especializada en
+               optimización de procesos contables y cumplimiento normativo.
+             </p>
+             <p data-about-description-two>
+               Apasionada por ayudar a las empresas a tomar decisiones financieras informadas
+               y a cumplir con sus obligaciones tributarias de manera eficiente y oportuna.
+             </p>
+           </div>
             <div class="about-skills">
-              <h3>Habilidades</h3>
-              <ul class="skills-list">
-                <li><span class="skill-tag">Contabilidad General</span></li>
-                <li><span class="skill-tag">Impuestos y Tributación</span></li>
-                <li><span class="skill-tag">Auditoría Financiera</span></li>
-                <li><span class="skill-tag">Nómina y Gestión Humana</span></li>
-                <li><span class="skill-tag">Asesoría Financiera</span></li>
-                <li><span class="skill-tag">Reportes Financieros</span></li>
-                <li><span class="skill-tag">Presupuestos y Proyecciones</span></li>
-                <li><span class="skill-tag">Consultoría Tributaria</span></li>
-              </ul>
-            </div>
+               <h3>Habilidades</h3>
+               <ul class="skills-list" data-skills-list>
+                 <li><span class="skill-tag">Contabilidad General</span></li>
+                 <li><span class="skill-tag">Impuestos y Tributación</span></li>
+                 <li><span class="skill-tag">Auditoría Financiera</span></li>
+                 <li><span class="skill-tag">Nómina y Gestión Humana</span></li>
+                 <li><span class="skill-tag">Asesoría Financiera</span></li>
+                 <li><span class="skill-tag">Reportes Financieros</span></li>
+                 <li><span class="skill-tag">Presupuestos y Proyecciones</span></li>
+                 <li><span class="skill-tag">Consultoría Tributaria</span></li>
+               </ul>
+             </div>
           </div>
         </div>
       </section>
@@ -362,11 +363,6 @@
   </div>
 </footer>
 
-<script type="module" src="components/header.js"></script>
-<script type="module" src="components/carousel.js"></script>
-<script type="module" src="components/about.js"></script>
-<script type="module" src="components/footer.js"></script>
-<script type="module" src="components/contact.js"></script>
-<script type="module" src="components/init.js"></script>
+<script type="module" src="main.js"></script>
 </body>
 </html>

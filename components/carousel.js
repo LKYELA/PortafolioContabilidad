@@ -1,4 +1,4 @@
-// Calendar Carousel — class-based module
+// Carousel Module — Module Pattern implementation
 export class Carousel {
   #rootElement;
   #options;
@@ -11,7 +11,7 @@ export class Carousel {
   #currentIndex = 0;
   #autoplayInterval = null;
 
-constructor(rootElement, options = {}) {
+  constructor(rootElement, options = {}) {
     this.#rootElement = rootElement;
     this.#options = {
       data: [],
@@ -20,7 +20,7 @@ constructor(rootElement, options = {}) {
     };
   }
 
-init() {
+  init() {
     this._cacheElements();
     this._validateData();
     this.render(this.#options.data);
@@ -32,7 +32,7 @@ init() {
     this.#prevBtn = this.#rootElement.querySelector('#carouselPrev');
     this.#nextBtn = this.#rootElement.querySelector('#carouselNext');
     this.#indicatorsContainer = this.#rootElement.querySelector('#carouselIndicators');
-    
+
     if (!this.#track || !this.#prevBtn || !this.#nextBtn) {
       console.error('Carousel elements not found');
       return;
@@ -50,7 +50,7 @@ init() {
 
   render(data) {
     if (!this._validateData()) return;
-    
+
     this.#track.innerHTML = data.map((item, index) => `
       <div class="calendar-card">
         <div class="card-number">${item.number}</div>
@@ -77,12 +77,12 @@ init() {
 
   _goTo(index) {
     if (this.#total === 0) return;
-    
+
     if (index < 0) index = 0;
     const maxIndex = this._getMaxIndex();
     if (index > maxIndex) index = maxIndex;
     this.#currentIndex = index;
-    
+
     this.#track.scrollTo({
       left: this._getCardUnit() * this.#currentIndex,
       behavior: 'smooth',
@@ -93,20 +93,20 @@ init() {
   _attachEvents() {
     this.#prevBtn.addEventListener('click', () => this.prev());
     this.#nextBtn.addEventListener('click', () => this.next());
-    
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') this.prev();
       if (e.key === 'ArrowRight') this.next();
     });
-    
+
     let startX = 0;
     let isSwiping = false;
-    
+
     this.#track.addEventListener('touchstart', (e) => {
       startX = e.touches[0].clientX;
       isSwiping = true;
     }, { passive: true });
-    
+
     this.#track.addEventListener('touchend', (e) => {
       if (!isSwiping) return;
       const diff = startX - e.changedTouches[0].clientX;
@@ -115,7 +115,7 @@ init() {
       if (diff < -unit * 0.25) this.prev();
       isSwiping = false;
     });
-    
+
     window.addEventListener('resize', () => {
       const maxIndex = this._getMaxIndex();
       this.#currentIndex = Math.min(this.#currentIndex, maxIndex);
@@ -139,13 +139,12 @@ init() {
   _setup() {
     this.#cards = this.#track.querySelectorAll('.calendar-card');
     this.#total = this.#cards.length;
-    
+
     if (this.#total === 0) {
       console.warn('No carousel cards found after render');
       return;
     }
-    
-    // Dot indicators
+
     if (this.#indicatorsContainer) {
       const maxIndex = this._getMaxIndex();
       this.#indicatorsContainer.innerHTML = '';
@@ -157,18 +156,17 @@ init() {
         this.#indicatorsContainer.appendChild(dot);
       }
     }
-    
+
     this._attachEvents();
     this._updateIndicators();
-    
-    // Initial position
+
     const maxIndex = this._getMaxIndex();
     this.#currentIndex = Math.min(this.#currentIndex, maxIndex);
     this._goTo(this.#currentIndex);
   }
 
   _getCardUnit() {
-    return this.#cards[0].getBoundingClientRect().width + 
+    return this.#cards[0].getBoundingClientRect().width +
            parseFloat(getComputedStyle(this.#track).gap || 0);
   }
 
