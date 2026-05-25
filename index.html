@@ -12,19 +12,21 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/utils.css" />
   </head>
-  <body>
+<body>
     <header>
 <div class="container">
   <h1 class="logo">
-    <a href="/" aria-label="Inicio">Luz Karime Yela</a>
+    <a href="/" aria-label="Inicio" data-site-name>Lorem Ipsum</a>
   </h1>
   <nav id="primary-menu" class="menu">
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Servicios</a></li>
-      <li><a href="#blog">Blog</a></li>
       <li><a href="#contact">Contacto</a></li>
       <li><a href="#contact" class="cta-nav">Agendar cita</a></li>
     </ul>
@@ -47,228 +49,72 @@
 </div>
 </header>
       <main>
-<section class="hero">
+<section class="hero" id="hero">
   <div class="container hero-split">
 
-    <!-- LEFT PANEL: Profile -->
-    <div class="hero-profile">
-      <h1 class="profile-name">Luz Karime Yela</h1>
-      <p class="profile-role">Contadora Pública<br>Especialista en Finanzas</p>
-    </div><!-- /.hero-profile -->
+      <!-- LEFT PANEL: Profile -->
+        <div class="hero-profile">
+           <h1 class="profile-name" data-site-name>Lorem Ipsum</h1>
+            <p class="profile-role" data-site-role>SITE.role<br data-site-role-line><span data-site-specialty>SITE.specialty</span></p>
+         </div>
 
-    <!-- RIGHT PANEL: Calendar Carousel -->
-    <div class="hero-calendars">
-      <div class="calendar-carousel" id="calendarCarousel">
-        <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">
-          <i class="fas fa-chevron-left"></i>
-        </button>
+        <!-- RIGHT PANEL: Calendars -->
+        <div class="hero-calendars">
+          <div class="calendar-carousel">
+            <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div id="carouselTrack" class="carousel-track"></div>
+            <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Siguiente">
+              <i class="fas fa-chevron-right"></i>
+            </button>
 
-        <div class="carousel-track" id="carouselTrack">
-
-        <div class="calendar-card">
-          <div class="card-number">01</div>
-          <h3 class="card-title">Declaración y pago bimestral – Consumo</h3>
-          <table class="card-table">
-            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
-              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
-              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
-              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
-              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
-              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">02</div>
-          <h3 class="card-title">Declaración mensual y pago – Gasolina y ACPM</h3>
-          <table class="card-table">
-            <thead><tr><th>Mes</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Enero</td><td><strong>13 de febrero</strong></td></tr>
-              <tr><td>Febrero</td><td><strong>13 de marzo</strong></td></tr>
-              <tr><td>Marzo</td><td><strong>16 de abril</strong></td></tr>
-              <tr><td>Abril</td><td><strong>15 de mayo</strong></td></tr>
-              <tr><td>Mayo</td><td><strong>16 de junio</strong></td></tr>
-              <tr><td>Junio</td><td><strong>14 de julio</strong></td></tr>
-              <tr><td>Julio</td><td><strong>18 de agosto</strong></td></tr>
-              <tr><td>Agosto</td><td><strong>14 de septiembre</strong></td></tr>
-              <tr><td>Septiembre</td><td><strong>15 de octubre</strong></td></tr>
-              <tr><td>Octubre</td><td><strong>17 de noviembre</strong></td></tr>
-              <tr><td>Noviembre</td><td><strong>15 de diciembre</strong></td></tr>
-              <tr><td>Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">03</div>
-          <h3 class="card-title">Declaración y pago – Carbono</h3>
-          <table class="card-table">
-            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
-              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
-              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
-              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
-              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
-              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">04</div>
-          <h3 class="card-title">Declaración anual y pago – RST (Régimen Simple de Tributación)</h3>
-          <table class="card-table">
-            <thead><tr><th>Concepto</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Declaración anual</td><td><strong>Hasta abril</strong> (por último dígito del NIT)</td></tr>
-              <tr><td>Anticipo bimestral (ene–feb)</td><td><strong>Hasta mayo</strong></td></tr>
-              <tr><td>Anticipo bimestral (mar–abr)</td><td><strong>Hasta junio</strong></td></tr>
-              <tr><td>Anticipo bimestral (may–jun)</td><td><strong>Hasta julio</strong></td></tr>
-              <tr><td>Anticipo bimestral (jul–ago)</td><td><strong>Hasta septiembre</strong></td></tr>
-              <tr><td>Anticipo bimestral (sep–oct)</td><td><strong>Hasta noviembre</strong></td></tr>
-              <tr><td>Anticipo bimestral (nov–dic)</td><td><strong>Hasta enero de 2027</strong></td></tr>
-              <tr><td colspan="2"><em>Consultar calendario DIAN oficial</em></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">05</div>
-          <h3 class="card-title">Declaración y pago bimestral – IVA prestadores de servicios desde el exterior</h3>
-          <table class="card-table">
-            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
-              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
-              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
-              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
-              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
-              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">06</div>
-          <h3 class="card-title">Declaración y pago – Patrimonio</h3>
-          <table class="card-table">
-            <thead><tr><th>Cuota</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Primera cuota</td><td><strong>14 de septiembre</strong></td></tr>
-              <tr><td>Segunda cuota</td><td>Por confirmar <em>(Consultar calendario DIAN oficial)</em></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">07</div>
-          <h3 class="card-title">Presentación y pago – Productos plásticos de un solo uso</h3>
-          <table class="card-table">
-            <thead><tr><th>Periodo</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Anual</td><td><strong>Hasta febrero</strong> <em>(día exacto por confirmar)</em></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">08</div>
-          <h3 class="card-title">Presentación y pago – Bebidas ultraprocesadas azucaradas y productos comestibles ultraprocesados</h3>
-          <table class="card-table">
-            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
-              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
-              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
-              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
-              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
-              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">09</div>
-          <h3 class="card-title">Pagos anticipados bimestrales – Presencia Económica Significativa (PES)</h3>
-          <table class="card-table">
-            <thead><tr><th>Bimestre</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Enero – Febrero</td><td><strong>13 de marzo</strong></td></tr>
-              <tr><td>Marzo – Abril</td><td><strong>15 de mayo</strong></td></tr>
-              <tr><td>Mayo – Junio</td><td><strong>14 de julio</strong></td></tr>
-              <tr><td>Julio – Agosto</td><td><strong>14 de septiembre</strong></td></tr>
-              <tr><td>Septiembre – Octubre</td><td><strong>17 de noviembre</strong></td></tr>
-              <tr><td>Noviembre – Diciembre</td><td><strong>18 de enero de 2027</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">10</div>
-          <h3 class="card-title">Declaración anual – Activos en el exterior</h3>
-          <table class="card-table">
-            <thead><tr><th>Concepto</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Año gravable 2025</td><td><em>Consultar calendario de renta</em> <small>(variantes por tipo de contribuyente y último dígito del NIT)</small></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">11</div>
-          <h3 class="card-title">Registro Único de Beneficiarios Finales (RUB)</h3>
-          <table class="card-table">
-            <thead><tr><th>Periodo</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Anual / Eventual</td><td><strong>13 de mes por definir</strong><br><em>Consultar calendario DIAN oficial</em></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">12</div>
-          <h3 class="card-title">Informe país por país (Country-by-Country Report)</h3>
-          <table class="card-table">
-            <thead><tr><th>Periodo</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Anual</td><td><strong>15 de diciembre</strong><br><em>Independiente del NIT</em></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="calendar-card">
-          <div class="card-number">13</div>
-          <h3 class="card-title">Precios de transferencia (Transfer Pricing) – declaración informativa y documentación comprobatoria</h3>
-          <table class="card-table">
-            <thead><tr><th>Documento</th><th>Fecha límite</th></tr></thead>
-            <tbody>
-              <tr><td>Declaración informativa y documentación comprobatoria</td><td><strong>Hasta septiembre</strong> <em>(día exacto por confirmar)</em></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div><!-- /.carousel-track -->
-
-      <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Siguiente">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-
-       <div class="carousel-indicators" id="carouselIndicators"></div>
-      </div><!-- /.calendar-carousel -->
-    </div><!-- /.hero-calendars -->
-
-    </div><!-- /.hero-split -->
+             <div class="carousel-indicators" id="carouselIndicators"></div>
+           </div><!-- /.calendar-carousel -->
+        </div><!-- /.hero-calendars -->
+     </div><!-- /.hero-split -->
 
   </section>
 </main>
 
-     <section class="about" id="about">
-     </section>
+      <section class="about" id="about">
+        <div class="container">
+          <div class="section-header">
+            <h2>About</h2>
+            <div class="section-divider"></div>
+          </div>
+          <div class="about-content">
+            <div class="about-photo">
+              <img src="assets/profile.jpg" alt="Foto profesional de LKY Consultores" class="profile-image">
+            </div>
+            <div class="about-bio">
+              <h3>Sobre mí</h3>
+              <p>
+                Contadora pública con más de 10 años de experiencia en finanzas corporativas,
+                asesoría contable y tributaria para empresas y particulares. Especializada en
+                optimización de procesos contables y cumplimiento normativo.
+              </p>
+              <p>
+                Apasionada por ayudar a las empresas a tomar decisiones financieras informadas
+                y a cumplir con sus obligaciones tributarias de manera eficiente y oportuna.
+              </p>
+            </div>
+            <div class="about-skills">
+              <h3>Habilidades</h3>
+              <ul class="skills-list">
+                <li><span class="skill-tag">Contabilidad General</span></li>
+                <li><span class="skill-tag">Impuestos y Tributación</span></li>
+                <li><span class="skill-tag">Auditoría Financiera</span></li>
+                <li><span class="skill-tag">Nómina y Gestión Humana</span></li>
+                <li><span class="skill-tag">Asesoría Financiera</span></li>
+                <li><span class="skill-tag">Reportes Financieros</span></li>
+                <li><span class="skill-tag">Presupuestos y Proyecciones</span></li>
+                <li><span class="skill-tag">Consultoría Tributaria</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
     <section class="services" id="services">
       <div class="container">
@@ -360,169 +206,167 @@
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="contact-inner">
-          <div class="section-header">
-            <h2>Contacto</h2>
-            <div class="section-divider"></div>
-          </div>
-          <p class="contact-tagline">
-            Agenda tu cita y recibe asesoría personalizada en contabilidad y finanzas.
-          </p>
-
-          <div class="contact-content">
-            <div class="contact-info">
-              <div class="contact-info-item">
-                <div class="contact-icon">
-                  <i class="fas fa-phone-alt"></i>
-                </div>
-                <div class="contact-info-text">
-                  <span class="contact-info-label">Teléfono</span>
-                  <a href="tel:+571234567890">+57 1 234 567 890</a>
-                </div>
-              </div>
-              <div class="contact-info-item">
-                <div class="contact-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div class="contact-info-text">
-                  <span class="contact-info-label">Correo electrónico</span>
-                  <a href="mailto:contacto@luzkarimeyela.com">contacto@luzkarimeyela.com</a>
-                </div>
-              </div>
-              <div class="contact-info-item">
-                <div class="contact-icon">
-                  <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div class="contact-info-text">
-                  <span class="contact-info-label">Dirección</span>
-                  <span>Calle 123 #45-67, Bogotá, Colombia</span>
-                </div>
-              </div>
-              <div class="contact-info-item">
-                <div class="contact-icon">
-                  <i class="far fa-clock"></i>
-                </div>
-                <div class="contact-info-text">
-                  <span class="contact-info-label">Horario de atención</span>
-                  <span>Lunes a Viernes, 8:00 a.m. – 6:00 p.m.</span>
-                </div>
-              </div>
-            </div>
-
-            <form class="contact-form" id="contact-form" novalidate>
-              <div class="form-group">
-                <input type="text" name="name" id="contact-name" placeholder="Nombre completo" required autocomplete="name" />
-              </div>
-              <div class="form-group">
-                <input type="email" name="email" id="contact-email" placeholder="Correo electrónico" required autocomplete="email" />
-              </div>
-              <div class="form-group">
-                <input type="text" name="subject" id="contact-subject" placeholder="Asunto / Servicio" required />
-              </div>
-              <div class="form-group">
-                <textarea name="message" id="contact-message" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
-              </div>
-              <button type="submit" class="contact-submit" id="contact-submit">
-                <span class="btn-text">Enviar mensaje</span>
-                <span class="btn-loading hidden"><i class="fas fa-spinner fa-spin"></i></span>
-              </button>
-              <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-     <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-column footer-logo">
-            <div class="logo">
-              <a href="/">Luz Karime Yela</a>
-            </div>
-            <p class="footer-description">
-              Contadora Pública especializada en finanzas corporativas y
-              asesoría contable.
+     <section class="contact" id="contact">
+       <div class="container">
+         <div class="contact-inner">
+           <div class="section-header">
+             <h2>Contacto</h2>
+             <div class="section-divider"></div>
+           </div>
+    <p class="contact-tagline" data-contact-tagline>
+              Agenda tu cita y recibe asesoría personalizada en contabilidad y finanzas.
             </p>
-            <div class="footer-social">
-              <a href="#" class="social-icon" aria-label="Facebook"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a href="#" class="social-icon" aria-label="Twitter"
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a href="#" class="social-icon" aria-label="LinkedIn"
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
-              <a href="#" class="social-icon" aria-label="Instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </div>
-          </div>
 
-          <div class="footer-column">
-            <h3>Enlaces rápidos</h3>
-            <ul class="footer-links">
-              <li><a href="#about">Sobre mí</a></li>
-              <li><a href="#services">Servicios</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#contact">Contacto</a></li>
-            </ul>
-          </div>
+           <div class="contact-content">
+             <div class="contact-info">
+                <div class="contact-info-item">
+                  <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                   <div class="contact-info-text">
+                     <span class="contact-info-label">Teléfono</span>
+                     <a href="#" data-contact-phone-link data-contact-phone>+12 345 678 901</a>
+                   </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                   <div class="contact-info-text">
+                     <span class="contact-info-label">Correo electrónico</span>
+                     <a href="#" data-contact-email-link data-contact-email>info@example.com</a>
+                   </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                   <div class="contact-info-text">
+                     <span class="contact-info-label">Dirección</span>
+                     <span data-contact-address>Avenida Falsa 123, Ciudad Imaginaria</span>
+                   </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="contact-icon">
+                    <i class="far fa-clock"></i>
+                  </div>
+                  <div class="contact-info-text">
+                    <span class="contact-info-label">Horario de atención</span>
+                    <span data-contact-hours>Lunes a Viernes, 8:00 a.m. – 6:00 p.m.</span>
+                  </div>
+                </div>
+             </div>
 
-          <div class="footer-column">
-            <h3>Servicios</h3>
-            <ul class="footer-links">
-              <li><a href="#services">Contabilidad General</a></li>
-              <li><a href="#services">Impuestos</a></li>
-              <li><a href="#services">Auditoría</a></li>
-              <li><a href="#services">Consultoría Financiera</a></li>
-            </ul>
-          </div>
+             <form class="contact-form" id="contact-form" novalidate>
+               <div class="form-header">
+                 <h3>Envíanos un mensaje</h3>
+                 <p class="form-description">Nos pondremos en contacto contigo a la brevedad posible</p>
+               </div>
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">Nombre completo</label>
+                  <input type="text" name="name" id="contact-name" placeholder="Nombre completo" required autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">Correo electrónico</label>
+                  <input type="email" name="email" id="contact-email" placeholder="Correo electrónico" required autocomplete="email" />
+                </div>
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label">Asunto / Servicio</label>
+                  <input type="text" name="subject" id="contact-subject" placeholder="Asunto / Servicio" required />
+                </div>
+                <div class="form-group">
+                  <label for="contact-message" class="form-label">Mensaje</label>
+                  <textarea name="message" id="contact-message" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+                </div>
+               <button type="submit" class="contact-submit" id="contact-submit">
+                 <span class="btn-text">Enviar mensaje</span>
+                 <span class="btn-loading hidden"><i class="fas fa-spinner fa-spin"></i></span>
+               </button>
+               <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
+             </form>
+           </div>
+         </div>
+       </div>
+     </section>
 
-          <div class="footer-column">
-            <h3>Newsletter</h3>
-            <p class="footer-newsletter-text">
-              Suscríbete para recibir noticias y actualizaciones.
-            </p>
-            <form class="newsletter-form" id="newsletter-form">
-              <input type="email" placeholder="Tu email" required />
-              <button type="submit" aria-label="Suscribirse">
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>
-            &copy; <span id="current-year"></span> Luz Karime Yela. Todos los
-            derechos reservados.
-          </p>
-          <a
-            href="#"
-            class="back-to-top"
-            id="back-to-top"
-            aria-label="Volver arriba"
-          >
-            <i class="fas fa-chevron-up"></i>
-          </a>
-        </div>
+<footer class="modern-footer">
+  <div class="container">
+    <div class="footer-col footer-brand">
+      <a href="/" class="footer-logo" aria-label="Inicio">
+        <i class="fas fa-calculator footer-logo-icon"></i>
+        <span class="footer-logo-text" data-site-name>LKY Consultores</span>
+      </a>
+      <p class="footer-tagline">Servicios profesionales de contabilidad y asesoría financiera para empresas e individuos</p>
+      <div class="footer-social-links">
+        <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="footer-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       </div>
+    </div>
+    <div class="footer-col footer-links">
+      <h4 class="footer-heading">Navegación</h4>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#contact">Contacto</a></li>
+          <li><a href="#contact" class="footer-cta">Agendar cita</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-col footer-services">
+      <h4 class="footer-heading">Nuestros Servicios</h4>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="#services">Contabilidad General</a></li>
+          <li><a href="#services">Declaración de Impuestos</a></li>
+          <li><a href="#services">Auditoría y Aseguramiento</a></li>
+          <li><a href="#services">Nómina y Gestión Humana</a></li>
+          <li><a href="#services">Asesoría Financiera y Tributaria</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4 class="footer-heading">Información de Contacto</h4>
+      <ul class="footer-contact-list">
+        <li>
+          <i class="fas fa-phone-alt footer-contact-icon"></i>
+          <a href="#" data-contact-phone-link data-contact-phone>+12 345 678 901</a>
+        </li>
+        <li>
+          <i class="fas fa-envelope footer-contact-icon"></i>
+          <a href="#" data-contact-email-link data-contact-email>info@example.com</a>
+        </li>
+        <li>
+          <i class="fas fa-map-marker-alt footer-contact-icon"></i>
+          <span data-contact-address>Avenida Falsa 123, Ciudad Imaginaria</span>
+        </li>
+        <li>
+          <i class="far fa-clock footer-contact-icon"></i>
+          <span>Lunes a Viernes: 8:00 AM - 6:00 PM</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom-bar">
+    <div class="container footer-bottom-inner">
+      <p class="footer-copyright">&copy; <span id="current-year"></span> <span data-site-name>LKY Consultores</span>. Todos los derechos reservados.</p>
+      <nav class="footer-legal">
+        <a href="#">Política de privacidad</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="#">Términos de servicio</a>
+      </nav>
+    </div>
+  </div>
+</footer>
 
-      <div class="footer-wave">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,0V46.23C477.61,114.41,854.39,114.41,1200,46.23V0Z"></path>
-        </svg>
-      </div>
-    </footer>
-
-    <script type="module" src="components/header.js"></script>
-    <script type="module" src="components/carousel.js"></script>
-    <script type="module" src="components/about.js"></script>
-    <script type="module" src="components/footer.js"></script>
-    <script type="module" src="components/contact.js"></script>
-  </body>
+<script type="module" src="components/header.js"></script>
+<script type="module" src="components/carousel.js"></script>
+<script type="module" src="components/about.js"></script>
+<script type="module" src="components/footer.js"></script>
+<script type="module" src="components/contact.js"></script>
+<script type="module" src="components/init.js"></script>
+</body>
 </html>

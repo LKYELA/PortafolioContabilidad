@@ -1,10 +1,10 @@
 // Contact: form validation, submission, and scroll animations
 import { observeOnScroll, isValidEmail, setFieldError, validateRequiredFields } from './utils.js';
 
-document.addEventListener('DOMContentLoaded', function() {
-  const contactForm = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('contact-submit');
-  const formStatus = document.getElementById('contact-form-status');
+export function init(rootElement, config) {
+  const contactForm = rootElement.getElementById('contact-form');
+  const submitBtn = rootElement.getElementById('contact-submit');
+  const formStatus = rootElement.getElementById('contact-form-status');
 
   if (!contactForm) return;
 
@@ -28,7 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
 
     const isValid = validateRequiredFields(this, (field, type) => {
-      if (type === 'required') setFieldError(field, true);
+      if (type === 'required') {
+        setFieldError(field, true);
+      } else if (type === 'invalid-email') {
+        setFieldError(field, true);
+        // Optionally, you can set a custom message for email
+        // We'll rely on the general message below, but you could set a field-specific message here.
+      }
     });
 
     if (!isValid) {
@@ -62,5 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
   observeOnScroll('.contact', () => {
     document.querySelector('.contact .section-header')?.classList.add('visible');
     document.querySelector('.contact-content')?.classList.add('visible');
+    document.querySelector('.form-header')?.classList.add('visible');
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-});
+}

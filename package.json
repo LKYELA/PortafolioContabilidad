@@ -1,0 +1,9 @@
+{
+  "name": "portafolio-contabilidad",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "echo 'Lint step placeholder'",
+    "build": "echo 'Build step placeholder'",
+    "test": "test -f index.html && echo 'Smoke test passed: index.html exists' || echo 'No tests yet'"
+  }
+}

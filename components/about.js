@@ -1,8 +1,8 @@
 // About section: scroll animations + stat counter
 import { observeOnScroll } from './utils.js';
 
-document.addEventListener('DOMContentLoaded', function() {
-  const aboutSection = document.querySelector('.about');
+export function init(rootElement, config) {
+  const aboutSection = rootElement.querySelector('.about');
   if (!aboutSection) return;
 
   // Animate text and image blocks
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
 
   // Stat counter
-  const statNumbers = document.querySelectorAll('.stat-number');
+  const statNumbers = rootElement.querySelectorAll('.stat-number');
 
   const animateCounter = (element, target) => {
     let current = 0;
@@ -34,4 +34,4 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!isNaN(target)) animateCounter(stat, target);
     });
   }, { threshold: 0.5 });
-});
+}

@@ -1,48 +1,27 @@
-// Footer: year, back-to-top, newsletter, scroll animations
-import { observeOnScroll, isValidEmail } from './utils.js';
-
-document.addEventListener('DOMContentLoaded', function() {
+// Footer: year + scroll-reveal
+export function init(rootElement, config) {
   // ── Year ──
-  const yearEl = document.getElementById('current-year');
+  const yearEl = rootElement.getElementById('current-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ── Back to top ──
-  const backToTopBtn = document.getElementById('back-to-top');
-  if (backToTopBtn) {
-    window.addEventListener('scroll', function() {
-      backToTopBtn.classList.toggle('visible', window.scrollY > 300);
-    }, { passive: true });
+  // ── Scroll reveal on footer columns ──
+  const footer = rootElement.querySelector('.modern-footer');
+  if (!footer) return;
 
-    backToTopBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
+  const columns = footer.querySelectorAll('.footer-col');
+  if (!columns.length) return;
 
-  // ── Newsletter ──
-  const newsletterForm = document.getElementById('newsletter-form');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = this.querySelector('input[type="email"]').value;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+  );
 
-      if (email && isValidEmail(email)) {
-        const btn = this.querySelector('button');
-        const originalText = btn.textContent;
-        btn.textContent = '¡Gracias!';
-        btn.disabled = true;
-
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-          this.reset();
-        }, 2000);
-      }
-    });
-  }
-
-  // ── Scroll animations ──
-  observeOnScroll('.footer-column, .footer-logo, .footer-bottom', (el) => {
-    el.classList.add('visible');
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-});
+  columns.forEach((col) => observer.observe(col));
+}
