@@ -50,74 +50,58 @@
 </div>
 </header>
       <main>
-<section class="hero" id="hero">
-  <div class="container hero-split">
+<section class="hero about" id="about">
+  <div class="container">
+    <div class="about-image-container">
+      <div class="about-photo">
+        <img src="assets/profile.jpg" alt="Foto profesional de LKY Consultores" class="profile-image">
+      </div>
+    </div>
+    <div class="about-text-content">
+      <div class="about-bio">
+        <h3>Sobre mí</h3>
+        <p data-about-description>
+          Contadora pública con más de 10 años de experiencia en finanzas corporativas,
+          asesoría contable y tributaria para empresas y particulares. Especializada en
+          optimización de procesos contables y cumplimiento normativo.
+        </p>
+        <p data-about-description-two>
+          Apasionada por ayudar a las empresas a tomar decisiones financieras informadas
+          y a cumplir con sus obligaciones tributarias de manera eficiente y oportuna.
+        </p>
+      </div>
+      <div class="section-header">
+        <h2>About</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-skills">
+        <h3>Habilidades</h3>
+        <ul class="skills-list" data-skills-list>
+          <li><span class="skill-tag">Contabilidad General</span></li>
+          <li><span class="skill-tag">Impuestos y Tributación</span></li>
+          <li><span class="skill-tag">Auditoría Financiera</span></li>
+          <li><span class="skill-tag">Nómina y Gestión Humana</span></li>
+          <li><span class="skill-tag">Asesoría Financiera</span></li>
+          <li><span class="skill-tag">Reportes Financieros</span></li>
+          <li><span class="skill-tag">Presupuestos y Proyecciones</span></li>
+          <li><span class="skill-tag">Consultoría Tributaria</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="calendar-carousel">
+      <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div id="carouselTrack" class="carousel-track"></div>
+      <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Siguiente">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="carousel-indicators" id="carouselIndicators"></div>
+    </div>
+  </div>
+</section>
 
-      <!-- LEFT PANEL: Profile -->
-        <div class="hero-profile">
-           <h1 class="profile-name" data-site-name>Lorem Ipsum</h1>
-            <p class="profile-role" data-site-role>SITE.role<br data-site-role-line><span data-site-specialty>SITE.specialty</span></p>
-         </div>
-
-        <!-- RIGHT PANEL: Calendars -->
-        <div class="hero-calendars">
-          <div class="calendar-carousel">
-            <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">
-              <i class="fas fa-chevron-left"></i>
-            </button>
-            <div id="carouselTrack" class="carousel-track"></div>
-            <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Siguiente">
-              <i class="fas fa-chevron-right"></i>
-            </button>
-
-             <div class="carousel-indicators" id="carouselIndicators"></div>
-           </div><!-- /.calendar-carousel -->
-        </div><!-- /.hero-calendars -->
-     </div><!-- /.hero-split -->
-
-  </section>
-</main>
-
-      <section class="about" id="about">
-        <div class="container">
-          <div class="section-header">
-            <h2>About</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div class="about-content">
-            <div class="about-photo">
-              <img src="assets/profile.jpg" alt="Foto profesional de LKY Consultores" class="profile-image">
-            </div>
-           <div class="about-bio">
-             <h3>Sobre mí</h3>
-             <p data-about-description>
-               Contadora pública con más de 10 años de experiencia en finanzas corporativas,
-               asesoría contable y tributaria para empresas y particulares. Especializada en
-               optimización de procesos contables y cumplimiento normativo.
-             </p>
-             <p data-about-description-two>
-               Apasionada por ayudar a las empresas a tomar decisiones financieras informadas
-               y a cumplir con sus obligaciones tributarias de manera eficiente y oportuna.
-             </p>
-           </div>
-            <div class="about-skills">
-               <h3>Habilidades</h3>
-               <ul class="skills-list" data-skills-list>
-                 <li><span class="skill-tag">Contabilidad General</span></li>
-                 <li><span class="skill-tag">Impuestos y Tributación</span></li>
-                 <li><span class="skill-tag">Auditoría Financiera</span></li>
-                 <li><span class="skill-tag">Nómina y Gestión Humana</span></li>
-                 <li><span class="skill-tag">Asesoría Financiera</span></li>
-                 <li><span class="skill-tag">Reportes Financieros</span></li>
-                 <li><span class="skill-tag">Presupuestos y Proyecciones</span></li>
-                 <li><span class="skill-tag">Consultoría Tributaria</span></li>
-               </ul>
-             </div>
-          </div>
-        </div>
-      </section>
-
-    <section class="services" id="services">
+      <section class="services" id="services">
       <div class="container">
         <div class="section-header">
           <h2>Servicios</h2>
@@ -309,9 +293,9 @@
       <h4 class="footer-heading">Navegación</h4>
       <nav class="footer-nav">
         <ul>
-          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#about">Inicio</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#services">Servicios</a></li>
+          <li><a href="#services">Servicios</a></li>   
           <li><a href="#contact">Contacto</a></li>
           <li><a href="#contact" class="footer-cta">Agendar cita</a></li>
         </ul>

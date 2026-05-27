@@ -152,8 +152,10 @@ header .container {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  min-height: 70vh;
-  box-sizing: border-box;
+}
+
+.hero-split > :nth-child(3) {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 960px) {
@@ -192,6 +194,16 @@ header .container {
   max-width: 286px;
 }
 
+.hero-calendars-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
 @media (min-width: 768px) {
   .hero-calendars {
     max-width: 786px;
@@ -202,7 +214,7 @@ header .container {
 .about {
   background: linear-gradient(135deg, var(--palette-accent-dark) 0%, var(--palette-accent) 50%, var(--peach-fuzz) 100%);
   color: #fff;
-  padding: 6rem 0;
+  padding: 1rem 0;
   position: relative;
   overflow: hidden;
 }
@@ -225,11 +237,23 @@ header .container {
 .about-image-container {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity var(--t-reveal-slow) var(--t-slow),
+  transition: opacity var(--t-reveal-slow) var(--t-sle),
     transform var(--t-reveal-slow) var(--t-slow);
 }
 
 .about-image-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-text-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--t-reveal-slow) var(--t-slow),
+    transform var(--t-reveal-slow) var(--t-slow);
+}
+
+.about-text-content.visible {
   opacity: 1;
   transform: translateY(0);
 }
